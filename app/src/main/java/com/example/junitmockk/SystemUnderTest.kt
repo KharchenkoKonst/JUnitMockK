@@ -1,11 +1,11 @@
 package com.example.junitmockk
 
-class SystemUnderTest(val dependency: DependencyClass) {
+class SystemUnderTest(private val dependency: DependencyClass) {
     fun getResult(): Int {
         return dependency.doCalculate()
     }
 
-    fun getResWithParam(arg: Int): Int {
-        return dependency.doCalculateWithParam(arg)
+    fun getResWithParam(param: Int): Int {
+        return dependency.doCalculateWithParam(param)
     }
 }
