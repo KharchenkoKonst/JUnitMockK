@@ -1,6 +1,9 @@
 package com.example.junitmockk
 
-class SystemUnderTest(private val dependency: DependencyClass) {
+import androidx.annotation.VisibleForTesting
+
+class SystemUnderTest(@VisibleForTesting(otherwise = VisibleForTesting.PRIVATE) val dependency: DependencyClass) {
+
     fun getResult(): Int {
         return dependency.doCalculate()
     }

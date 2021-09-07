@@ -1,5 +1,7 @@
 package com.example.junitmockk
 
+import androidx.annotation.VisibleForTesting
+
 class DependencyClass(private val value: Int) {
 
     fun doCalculate(): Int {
@@ -9,4 +11,6 @@ class DependencyClass(private val value: Int) {
     fun doCalculateWithParam(value: Int): Int {
         return this.value + value
     }
+
+    fun fustRuns() = Unit
 }

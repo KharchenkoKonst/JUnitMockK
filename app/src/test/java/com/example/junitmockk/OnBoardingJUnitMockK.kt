@@ -19,21 +19,24 @@ class OnBoardingJUnitMockK {
         Flowable.just("RxJavaRule")
     }
 
-    @VisibleForTesting
     @Test
     fun `test private field`() {
         every { dependency.doCalculate() } returns 10
-
         val sut = SystemUnderTest(dependency)
-        val privateField = sut.javaClass.getDeclaredField("dependency")
-        privateField.isAccessible = true
-        assertEquals(10, (privateField.get(sut) as DependencyClass).doCalculate())
+
+        assertEquals(10, sut.dependency.doCalculate())
     }
 
     @Test
     fun `test relaxed mock`() {
         val relaxedMock = mockk<DependencyClass>(relaxed = true)
         assertEquals(0, relaxedMock.doCalculate())
+    }
+
+    @Test
+    fun `test relax unit fun`() {
+        val relaxUnitFun = mockk<DependencyClass>(relaxUnitFun = true)
+        assertEquals(Unit, relaxUnitFun.fustRuns())
     }
 
     @Test
